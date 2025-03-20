@@ -1,0 +1,17 @@
+img{
+    height: 180px;
+  }
+  .card{
+    color: #fff;
+    width: 18rem;
+  }
+  .verde{
+    background: rgb(129, 204, 85);
+  }
+  .verde h5{
+    color: rgb(5, 5, 5);
+
+  }
+  .bg-dark h5{
+color: rgb(129, 204, 85);
+  }

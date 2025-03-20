@@ -1,0 +1,28 @@
+
+<section>
+    <form id="formAlquilar" class="row p-2 justify-content-center"  (ngSubmit)="alquilerCoche()" >
+      <div *ngIf="coche" class="col-7">
+
+      <div class="row mb-3">
+        <label for="clienteNombre" class="col-sm-2 col-form-label">Nombre del cliente</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="clienteNombre" [(ngModel)]="coche.alquiler.clienteNombre" name="clienteNombre" >
+  </div>
+      </div>
+     
+      <div class="row mb-3">
+        <label for="fechaInicio" class="col-sm-2 col-form-label">fecha de Inicio</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control bg-body-tertiary" id="fechaInicio" [(ngModel)]="coche.alquiler.fechaInicio"  min="{{ diaActual() }}" name="fechaInicio" >
+      </div>
+      </div>
+     
+      <span *ngIf="errors" class="text-danger">{{errors}}</span>
+    </div>
+     <div class="row mb-3">
+
+      <button type="submit" class="btn btn-success col-3 m-auto" id="Alquilar">Alquilar</button>
+    </div>
+
+    </form>
+  </section>

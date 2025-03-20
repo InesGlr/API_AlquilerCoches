@@ -1,0 +1,42 @@
+ <section>
+  <form id="formDevolucion" class="row p-2 justify-content-center" (ngSubmit)="devolucionCoche()">
+    <div *ngIf="coche" class="col-7">
+
+      <div class="row mb-3">
+        <label for="clienteNombre" class="col-sm-2 col-form-label">Nombre del cliente</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="clienteNombre" [(ngModel)]="coche.alquiler.clienteNombre" name="clienteNombre" disabled>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="fechaInicio" class="col-sm-2 col-form-label">Fecha de Inicio</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="fechaInicio" [(ngModel)]="coche.alquiler.fechaInicio" name="fechaInicio" disabled>
+        </div>
+      </div>
+
+      <!-- Si han pasado de la fecha de inicio, te saldra el total de dias = al dia actual -->
+      <div class="row mb-3">
+        <p>Inserta una fecha para calcular los dias y coste total, si ya has iniciado tu alquiler saldra:</p>
+        <label for="fechaFinal" class="col-sm-2 col-form-label">Fecha Final</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="fechaFinal" [(ngModel)]="fechaFinal" name="fechaFinal" (ngModelChange)="comprobacion()" min="{{ diaActual() }}" >
+        </div>
+      </div>
+      
+
+      <div class="row mb-3" *ngIf="diasTotal > 0">
+        <div class="col-sm-12">
+          <p>Total de días alquilado: {{ diasTotal }}</p>
+          <p>Precio por día: {{coche.precio_diario }} €</p>
+          <p>Coste final: {{ diasTotal * coche.precio_diario }} €</p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row mb-3">
+      <button type="submit" class="btn btn-success col-3 m-auto" id="devolucion">Devolucion</button>
+    </div>
+  </form>
+</section>

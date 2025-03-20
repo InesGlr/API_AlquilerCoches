@@ -1,0 +1,75 @@
+
+<section class="  bg-secondary-subtle">
+    <form id="formEditar" class="row p-2 justify-content-center" (ngSubmit)="updateCoche()" >
+      <div *ngIf="coche" class="col-7">
+
+      <div class="row mb-3">
+        <label for="marca" class="col-sm-2 col-form-label">Marca</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="marca" [(ngModel)]="coche.marca" name="marca" >
+  </div>
+      </div>
+      <div class="row mb-3">
+        <label for="modelo" class="col-sm-2 col-form-label">Modelo</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="modelo" [(ngModel)]="coche.modelo" name="modelo" >
+          
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="anio" class="col-sm-2 col-form-label">Año</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control bg-body-tertiary" id="anio" [(ngModel)]="coche.anio" name="anio" >
+          
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="color" class="col-sm-2 col-form-label">Color</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="color" [(ngModel)]="coche.color" name="color" >
+         
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="matricula" class="col-sm-2 col-form-label">Matricula</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="matricula" [(ngModel)]="coche.matricula" name="matricula">
+          
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="precio_diario" class="col-sm-2 col-form-label">Precio por día</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control bg-body-tertiary" id="precio_diario" [(ngModel)]="coche.precio_diario" name="precio_diario">
+        
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="imagen" [(ngModel)]="coche.imagen" name="imagen">
+         
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="nota" class="col-sm-2 col-form-label">Nota</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="nota" [(ngModel)]="coche.nota" name="nota">
+          
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="kilometraje" class="col-sm-2 col-form-label">Kilometraje</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control bg-body-tertiary" id="kilometraje" [(ngModel)]="coche.kilometraje" name="kilometraje">
+
+        </div>
+      </div>
+      <span *ngIf="errors" class="text-danger">{{errors}}</span>
+    </div>
+    <div class="row mb-3">
+
+      <button type="submit" class="btn btn-success col-3 m-auto" id="actualizar">Actualizar</button>
+      </div>
+    </form>
+  </section>

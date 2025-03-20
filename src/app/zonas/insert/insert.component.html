@@ -1,0 +1,77 @@
+
+     <section class="  bg-body-tertiary p-3 row justify-content-center">
+      <form id="formAñadir" class="col-7" (ngSubmit)="insertCoche()" >
+        <div class="row mb-3">
+          <label for="marca" class="col-sm-3 col-form-label">Marca</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="marca" [(ngModel)]="marca" name="marca" >
+      </div>
+        </div>
+        <div class="row mb-3">
+          <label for="modelo" class="col-sm-3 col-form-label">Modelo</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="modelo" [(ngModel)]="modelo" name="modelo" >
+           
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="anio" class="col-sm-3 col-form-label">Año</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="anio" [(ngModel)]="anio" name="anio" >
+           
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="color" class="col-sm-3 col-form-label">Color</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="color" [(ngModel)]="color" name="color" >
+          
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="matricula" class="col-sm-3 col-form-label">Matricula</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="matricula" [(ngModel)]="matricula" name="matricula">
+          
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="precio_diario" class="col-sm-3 col-form-label">Precio por día</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="precio_diario" [(ngModel)]="precio_diario" name="precio_diario">
+          
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="imagen" class="col-sm-3 col-form-label">Imagen</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="imagen" [(ngModel)]="imagen" name="imagen">
+           
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="nota" class="col-sm-3 col-form-label">Nota</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="nota" [(ngModel)]="nota" name="nota">
+           
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="kilometraje" class="col-sm-3 col-form-label">Kilometraje</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="kilometraje" [(ngModel)]="kilometraje" name="kilometraje">
+          
+          </div>
+        </div>
+        <span *ngIf="errors" class="text-danger">{{errors}}</span>
+        <div class="row mb-3">
+          
+            <button type="submit" class="btn btn-success col-3 m-auto" id="añadir">Añadir</button>
+
+          </div>
+
+      </form>
+    </section>
+
+
+    

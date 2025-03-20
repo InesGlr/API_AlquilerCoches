@@ -1,0 +1,80 @@
+<article class="container-fluid row m-1 bg-body-tertiary" >
+ 
+  <!-- Filtros -->
+  <section class="col-sm-12 col-md-12 col-lg-3 m-2" *ngIf="coches">
+ <div  class="mb-2">
+    <label for="filtroPrecio" class="form-label ">Precio: </label>
+    <input type="number"  class="form-control" id="filtroPrecio" [(ngModel)]="filtroPrecio" (change)="filtro()">
+  </div>  
+  <div  class="mb-2">
+    <label for="filtroColor" class="form-label">Color: </label>
+    <select id="filtroColor" class="form-control" [(ngModel)]="filtroColor" (change)="filtro()">
+      <option value=""></option>
+      <option *ngFor="let color of colores" value="{{ color }}">{{ color }}</option>
+    </select>
+  </div>
+  <div  class="mb-2">
+    <label for="filtroMarca" class="form-label">Marca: </label>
+    <select id="filtroMarca" class="form-control" [(ngModel)]="filtroMarca" (change)="filtro()">
+      <option value=""></option>
+      <option *ngFor="let marca of marcas" value="{{ marca }}">{{ marca }}</option>
+    </select>
+  </div>
+  <div  class="mb-2">
+    <label for="filtroAnio" class="form-label">Año: </label>
+    <input type="number" id="filtroAnio"  class="form-control" [(ngModel)]="filtroAnio" (change)="filtro()">
+  </div>
+  <div  class="mb-2">
+    <label for="filtroEstadoAlquiler" class="form-label">Estado de alquiler: </label>
+    <select id="filtroEstadoAlquiler" class="form-control" [(ngModel)]="filtroEstadoAlquiler" (change)="filtro()">
+      <option value=""></option>
+      <option value="Disponible">Disponible</option>
+      <option value="Alquilado">Alquilado</option>
+
+    </select>
+  </div>
+  <div  class="mb-2" >
+    <label for="filtroPersonaAlquilada" class="form-label">Persona que lo tiene alquilado: </label>
+    <input type="text" class="form-control" id="filtroPersonaAlquilada" [(ngModel)]="filtroPersonaAlquilada" (change)="filtro()">
+  </div> 
+  <div class="text-center mb-2"> 
+    <button type="button" (click)="restablecer()" class="btn btn-dark m-2">Restablecer</button>
+  </div>
+</section>
+
+
+
+
+  <!-- Lista de coches -->
+  <div class="col-sm-12 col-md-12 col-lg-9 row justify-content-around">
+  <section class="card col-12 m-2 p-0 verde border-0"  *ngFor="let coche of coches | paginate: { itemsPerPage: 9, currentPage: p }" [ngClass]="{ 'bg-dark': (coche.alquiler.clienteNombre != null && coche.alquiler.fechaInicio != null)}">
+    
+    <img src="../assets/public/{{ coche.imagen }}" class="card-img-top" >
+    <div  class="card-body">
+        <h5 class="card-title">{{ coche.marca }} {{ coche.modelo }}</h5>
+        <p class="card-text">{{ coche.matricula }}</p>
+        <p class="card-text">{{ coche.nota }}</p>
+
+        <div class="card-text d-flex justify-content-evenly">
+        <a routerLink="/alquiler/{{coche.id}}"  *ngIf="coche.alquiler?.clienteNombre == null && coche.alquiler?.fechaInicio == null" class="btn btn-primary bi bi-key-fill"> Alquilar</a>
+        <a *ngIf="coche.alquiler?.clienteNombre != null && coche.alquiler?.fechaInicio != null" routerLink="/devolucion/{{coche.id}}" class="btn btn-danger bi bi-download"> Devolver</a>
+        <a routerLink="/update/{{coche.id}}" class="btn btn-warning">Editar</a>
+        </div>
+      <div class="text-center"> 
+        <button *ngIf="coche.alquiler?.clienteNombre == null && coche.alquiler?.fechaInicio == null" type="button" (click)="eliminarCoche(coche.id)" class="btn btn-danger m-2">Eliminar</button>
+      </div>
+    </div>
+
+</section>
+
+
+<!-- Paginado -->
+<div class="col-12 text-center" *ngIf="coches">
+<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>
+</div>
+
+<!-- Mensaje error -->
+<span *ngIf="error" class="text-danger display-4 p-5">{{error}}</span>
+
+</article>
